@@ -13,7 +13,7 @@ public class CloudConvertor {
 
     @TypeConverter
     public String fromMainString(Clouds clouds){
-        if (clouds ==null ){
+        if (clouds == null ){
             return  null;
         }
         Gson gson = new Gson();

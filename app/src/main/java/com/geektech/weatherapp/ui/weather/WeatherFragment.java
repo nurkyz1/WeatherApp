@@ -47,6 +47,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
         super.onCreate(savedInstanceState);
         NavHostFragment navHostFragment = (NavHostFragment)
                 requireActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host);
+        assert navHostFragment != null;
         navController = navHostFragment.getNavController();
         if (getArguments() !=null)
             args =WeatherFragmentArgs.fromBundle(getArguments());
@@ -60,12 +61,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
 
     @Override
     protected void setupUI() {
-        binding.textTown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_weatherFragment_to_selectFragment);
-            }
-        });
+        binding.textTown.setOnClickListener(v -> navController.navigate(R.id.action_weatherFragment_to_selectFragment));
         model = new ViewModelProvider(requireActivity()).get(WeatherViewModel.class);
         model.setCity(args.getWeatherId());
         model.fetchTemp();
@@ -96,7 +92,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
 //             sys = dao.getWeather().getSys();
 //             weather = dao.getWeather();
 //             weather_1s = (ArrayList<Weather_1>) dao.getWeather().getWeather1();
-             setWeather();
+            // setWeather();
              break;
      }
         });
@@ -105,7 +101,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
 
     @SuppressLint("SetTextI18n")
     private void setWeather() {
-      //  binding.textSunny.setText(weather_1s.get(0).getMain());
+        binding.textSunny.setText(weather_1s.get(0).getMain());
         Glide.with(requireContext()).load("https://openweathermap.org/img/wn/"+weather_1s.get(0).getIcon()+".png")
                 .override(100,100)
                 .into(binding.imgSunny);
