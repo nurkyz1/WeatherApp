@@ -87,12 +87,12 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
          case ERROR:
              Toast.makeText(requireActivity(), "Internet not connected! Loading last data", Toast.LENGTH_SHORT).show();
              binding.progress.setVisibility(View.GONE);
-//             wind = dao.getWeather().getWind();
-//             main = dao.getWeather().getMain();
-//             sys = dao.getWeather().getSys();
-//             weather = dao.getWeather();
-//             weather_1s = (ArrayList<Weather_1>) dao.getWeather().getWeather1();
-            // setWeather();
+             wind = dao.getWeather().getWind();
+             main = dao.getWeather().getMain();
+             sys = dao.getWeather().getSys();
+             weather = dao.getWeather();
+             weather_1s = (ArrayList<Weather_1>) dao.getWeather().getWeather1();
+             setWeather();
              break;
      }
         });
